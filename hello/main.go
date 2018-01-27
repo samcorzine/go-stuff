@@ -49,8 +49,4 @@ func addnode(old SandNode, new SandNode, direction string){
 }
 
 func main(){
-  var l = IntLinkedList{first : &IntNode{value:1, next: &IntNode{value: 2, next: nil}}}
-  fmt.Println(l.length())
-  fmt.Println(l.sum())
-  fmt.Println("Hello World")
 }
