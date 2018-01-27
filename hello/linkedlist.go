@@ -1,4 +1,4 @@
-package "intlinkedist"
+package intlinkedist
 
 type IntNode struct{
   value int
