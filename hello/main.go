@@ -4,6 +4,8 @@ import "fmt"
 
 
 type IntNode struct{
+  x int
+  y int
   value int
   next *IntNode
 }
@@ -85,8 +87,6 @@ func addnode(old SandNode, new SandNode, direction string){
     old.w = nodeptr
   }
 }
-
-
 
 func main(){
   var l = IntLinkedList{first : &IntNode{value:1, next: &IntNode{value: 2, next: nil}}}
