@@ -99,6 +99,11 @@ func (gam Game) moveIsValid(mov Move) bool {
 func (gam Game) doMove(mov Move) {
   gam.board[mov.endx][mov.endy] = gam.board[mov.startx][mov.starty]
   gam.board[mov.startx][mov.starty] = 0
+  if gam.nextPlayer == -1 {
+    gam.nextPlayer = 1
+  } else {
+    gam.nextPlayer = -1
+  }
 }
 
 func main(){
