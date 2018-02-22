@@ -18,7 +18,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'go test sources/'
+                sh 'go test'
             }
         }
     }
