@@ -8,6 +8,10 @@ pipeline {
                 }
             }
             steps {
+                sh 'export GOPATH=$WORKSPACE/..'
+                sh 'export PATH=$GOPATH:$PATH'
+
+                sh 'cd $GOPATH/src/github.com/coredns/coredns && make coredns'
                 sh 'go build'
             }
         }
