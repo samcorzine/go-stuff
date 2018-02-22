@@ -3,6 +3,8 @@ package main
 import "fmt"
 import "practice/hello/coordinateSet"
 
+
+
 type SandNode struct{
   x, y int
   value int
