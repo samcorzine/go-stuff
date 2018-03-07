@@ -3,6 +3,7 @@ package main
 import (
   "net/http"
   "strings"
+  "encoding/json"
 )
 
 func sayHello(w http.ResponseWriter, r *http.Request){

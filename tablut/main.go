@@ -1,9 +1,16 @@
 package main
 
 import (
+  "github.com/gorilla/mux"
+  "net/http"
+  "encoding/json"
+  "fmt"
+  // "strconv"
 )
 
 type Game struct{
+  // board has entries -1 -> black, 0 -> empty tile, 1 -> white, 10 -> king
+  // nextPlayer is either -1 or 1 for black or white
   board [9][9] int
   nextPlayer int
 }
@@ -26,6 +33,7 @@ func max(a, b int) int {
   }
   return b
 }
+
 
 func getStartingBoard() [9][9]int {
   var board = [9][9]int{}
@@ -106,6 +114,41 @@ func (gam Game) doMove(mov Move) {
   }
 }
 
+func altMoveHandler(w http.ResponseWriter, r *http.Request) {
+    // params := mux.Vars(r)
+    var move Move
+    _ = json.NewDecoder(r.Body).Decode(&move)
+    fmt.Println(move)
+    // move.player = strconv.Atoi(params["player"])
+    // people = append(people, person)
+    json.NewEncoder(w).Encode(move)
+}
+func moveHandler(w http.ResponseWriter, r *http.Request){
+  params := mux.Vars(r)
+  fmt.Println(params["player"])
+  // player := strconv.Atoi(params["player"])
+  // startx := strconv.Atoi(params["startx"])
+  // starty := strconv.Atoi(params["starty"])
+  // endx := strconv.Atoi(params["endx"])
+  // endy := strconv.Atoi(params["endy"])
+  // var move = Move{player, startx , starty, endx, endy}
+  //
+  // // err := json.NewDecoder(r.Body).Decode(&move)
+  // // fmt.Println(err)
+  // if game.moveIsValid(move) {
+  //   game.doMove(move)
+  // }
+  // fmt.Println(move.player)
+  // json.NewEncoder(w).Encode(game)
+
+}
+
+var game = Game{getStartingBoard(), -1}
+
 func main(){
 
+  http.HandleFunc("/", altMoveHandler)
+  if err := http.ListenAndServe(":8765", nil); err != nil {
+    panic(err)
+  }
 }
