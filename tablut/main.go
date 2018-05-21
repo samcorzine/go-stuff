@@ -165,6 +165,11 @@ func (gam Game) victoryCheck() int {
 func (gam *Game) checkForCapture(targetX int, targetY int, myX int, myY int, curPlayer int) bool {
   // Doesn't handle throne effects for non-king pieces
 
+<<<<<<< HEAD
+=======
+
+  // Handles potential King Captures
+>>>>>>> c0b649bdfe588c556fdf544c52ba04373b59d7f6
   if gam.Board[targetX][targetY] == 10  && curPlayer == -1 {
     // On throne
     if targetX == 4 && targetY == 4 {
@@ -229,7 +234,7 @@ func (gam *Game) checkForCapture(targetX int, targetY int, myX int, myY int, cur
         }
       }
       if myY < targetY && targetY != 8{
-        if gam.isSamePlayer(curPlayer, targetX, targetY + 1) || (targetX - 1 == 4 && targetY + 1 == 4 && gam.Board[4][4] != 10) {
+        if gam.isSamePlayer(curPlayer, targetX, targetY + 1) || (targetX == 4 && targetY + 1 == 4 && gam.Board[4][4] != 10) {
           return true
         }
       }

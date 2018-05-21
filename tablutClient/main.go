@@ -60,7 +60,8 @@ func (gam Game) moveIsValid(mov Move) bool {
   endy := *mov.Endy
   startx := *mov.Startx
   starty := *mov.Starty
-  // checks to make sure destination is nonempty
+
+  // checks to make sure destination is empty
   if (gam.Board[endx][endy]) != 0 {
     return false
   }
@@ -128,6 +129,11 @@ func (gam Game) myPieces(playerNum int) []Coordinate {
     }
   }
   return coordinateHolder
+}
+
+
+func defenseMoveMaker(gameState Game) Move {
+
 }
 
 
